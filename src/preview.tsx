@@ -62,7 +62,7 @@ const Price: React.FC<{
       setColor("red");
     }
 
-    if (priceChange > threshHold || priceChange < 5) {
+    if (priceChange >= threshHold || priceChange < 5) {
       if (audio.current) {
         audio.current.play();
       }
