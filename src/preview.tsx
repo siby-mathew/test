@@ -47,7 +47,7 @@ const Price: React.FC<{
   inr: number;
   initialPrice: number;
   tokrnPrice: number;
-}> = ({ priceChange, swap, initialPrice, inr, tokrnPrice }) => {
+}> = ({ priceChange, swap, initialPrice, tokrnPrice }) => {
   const [color, setColor] = useState("green");
   const audio = useRef<HTMLAudioElement>(null);
   const [threshHold, setThresh] = useState(getThreshold());
