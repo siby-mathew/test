@@ -194,6 +194,7 @@ export const Preview: React.FC<ApiResponse> = (data) => {
   }, [data, startValue]);
 
   const SWAP_WILL_GET = INR_VALUE / data[TOKEN_TO_SWAP.symbol].inr;
+
   return (
     <Grid gap={2} flexDirection={"row"}>
       <HStack>
