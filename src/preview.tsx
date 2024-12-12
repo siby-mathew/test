@@ -96,11 +96,11 @@ const Price: React.FC<{
     }
   };
 
-  useEffect(() => {
-    if (priceChangeAlert.current) {
-      priceChangeAlert.current.play();
-    }
-  }, [color]);
+  // useEffect(() => {
+  //   if (priceChangeAlert.current) {
+  //     priceChangeAlert.current.play();
+  //   }
+  // }, [color]);
 
   useEffect(() => {
     if (swap >= targetICP || tokrnPrice >= price) {
