@@ -11,7 +11,7 @@ const TOKENS_I_HAVE: TokenIhaveType = {
 // };
 
 const getStartValue = (initialValue: number) => {
-  const valueFromStorage = localStorage.getItem("value") || "5";
+  const valueFromStorage = localStorage.getItem("value");
   if (!valueFromStorage || isNaN(parseFloat(valueFromStorage))) {
     localStorage.setItem("value", initialValue.toString());
     return initialValue;
@@ -76,7 +76,17 @@ const Price: React.FC<{ priceChange: number }> = ({ priceChange }) => {
     <Box fontSize={250} fontWeight={"bold"} color={color}>
       <Button onClick={play}>Play</Button>
       <Button onClick={stop}>Stop</Button>
-
+      <Button
+        onClick={() => {
+          const val = prompt("Enter initial price");
+          if (val && parseFloat(val) > 0) {
+            localStorage.setItem("value", parseFloat(val).toString());
+            window.location.reload();
+          }
+        }}
+      >
+        Set initial Price
+      </Button>
       <Button onClick={setThreshhold}>Alert When {threshHold}</Button>
       <audio loop src="../alarm.wav" controls ref={audio}></audio>
       {priceChange.toFixed(2)}
