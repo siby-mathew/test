@@ -211,7 +211,9 @@ export const Preview: React.FC<ApiResponse> = (data) => {
               ₹{INR_VALUE} - ₹{data[TOKENS_I_HAVE.symbol].inr}
             </Heading>
           </Box>
-          <Box fontSize={100}>{SWAP_WILL_GET.toFixed(3)}</Box>
+          <Box fontSize={50}>
+            {SWAP_WILL_GET.toFixed(3)} - {data[TOKEN_TO_SWAP.symbol].inr}
+          </Box>
         </Flex>
         <Flex>
           <Price
