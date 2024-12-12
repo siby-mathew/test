@@ -11,7 +11,7 @@ const TOKENS_I_HAVE: TokenIhaveType = {
 // };
 
 const getStartValue = (initialValue: number) => {
-  const valueFromStorage = localStorage.getItem("value");
+  const valueFromStorage = localStorage.getItem("value") || "5";
   if (!valueFromStorage || isNaN(parseFloat(valueFromStorage))) {
     localStorage.setItem("value", initialValue.toString());
     return initialValue;
