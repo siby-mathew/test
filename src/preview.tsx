@@ -41,6 +41,19 @@ const getPrice = () => {
   const icp = localStorage.getItem("pricetarget") || "0";
   return parseFloat(icp);
 };
+
+const Clock: React.FC = () => {
+  const [time, setTime] = useState(new Date());
+  useEffect(() => {
+    setInterval(() => {
+      setTime(new Date());
+    }, 1000);
+  }, []);
+  const timestring = `${
+    time.getHours() > 12 ? time.getHours() - 12 : time.getHours()
+  }:${time.getMinutes()}:${time.getSeconds()}`;
+  return <Box fontSize={60}>{timestring}</Box>;
+};
 const Price: React.FC<{
   priceChange: number;
   swap: number;
@@ -62,8 +75,8 @@ const Price: React.FC<{
     } else {
       setColor("red");
     }
-
-    if (priceChange >= threshHold || priceChange < 5) {
+    // || priceChange < 5
+    if (priceChange >= threshHold) {
       if (audio.current) {
         audio.current.play();
       }
@@ -197,8 +210,9 @@ export const Preview: React.FC<ApiResponse> = (data) => {
 
   return (
     <Grid gap={2} flexDirection={"row"}>
+      <Clock />
       <HStack>
-        <Flex direction={"column"}>
+        <Flex direction={"column"} alignItems={"flex-start"}>
           <Box>
             <Heading variant={"h1"}>TOKEN IN HAND</Heading>
           </Box>
@@ -210,7 +224,7 @@ export const Preview: React.FC<ApiResponse> = (data) => {
           </Box>
           <Box>
             <Heading variant={"h2"}>
-              ₹{INR_VALUE} - ₹{data[TOKENS_I_HAVE.symbol].inr}
+              ₹{INR_VALUE.toFixed(2)} - ₹{data[TOKENS_I_HAVE.symbol].inr}
             </Heading>
           </Box>
           <Box fontSize={50}>
