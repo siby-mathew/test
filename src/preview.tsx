@@ -2,13 +2,13 @@ import { Box, Button, Flex, Grid, HStack, Heading } from "@chakra-ui/react";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 const TOKENS_I_HAVE: TokenIhaveType = {
-  amount: 3520,
+  amount: 3520.506,
   symbol: "sonic-2",
 };
 
-const TOKEN_TO_SWAP: TokensToSwap = {
-  symbol: "internet-computer",
-};
+// const TOKEN_TO_SWAP: TokensToSwap = {
+//   symbol: "internet-computer",
+// };
 
 const getStartValue = (initialValue: number) => {
   const valueFromStorage = localStorage.getItem("value");
