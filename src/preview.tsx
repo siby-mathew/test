@@ -46,7 +46,8 @@ const Price: React.FC<{
   swap: number;
   inr: number;
   initialPrice: number;
-}> = ({ priceChange, swap, initialPrice, inr }) => {
+  tokrnPrice: number;
+}> = ({ priceChange, swap, initialPrice, inr, tokrnPrice }) => {
   const [color, setColor] = useState("green");
   const audio = useRef<HTMLAudioElement>(null);
   const [threshHold, setThresh] = useState(getThreshold());
@@ -89,10 +90,10 @@ const Price: React.FC<{
   }, [color]);
 
   useEffect(() => {
-    if (swap >= targetICP || inr >= price) {
+    if (swap >= targetICP || tokrnPrice >= price) {
       play();
     }
-  }, [swap, targetICP, price, inr]);
+  }, [swap, targetICP, price, tokrnPrice]);
 
   const setLocalStorageVal = (
     name: string,
@@ -107,7 +108,7 @@ const Price: React.FC<{
     }
   };
 
-  const isPriceChange = inr >= price;
+  const isPriceChange = tokrnPrice >= price;
   const isIcpHit = swap >= targetICP;
   const percentageHit = priceChange > threshHold || priceChange < 5;
   return (
@@ -164,7 +165,7 @@ const Price: React.FC<{
         fontSize={140}
         color={"#000"}
       >
-        {inr.toFixed(3)}
+        {tokrnPrice.toFixed(3)}
       </Box>
       <Box className={percentageHit ? "blink-me" : ""} fontSize={140}>
         {priceChange.toFixed(2)}%
@@ -221,6 +222,7 @@ export const Preview: React.FC<ApiResponse> = (data) => {
             swap={SWAP_WILL_GET}
             inr={INR_VALUE}
             initialPrice={startValue}
+            tokrnPrice={data[TOKENS_I_HAVE.symbol].inr}
           />
         </Flex>
       </HStack>
