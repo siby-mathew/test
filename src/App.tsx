@@ -23,7 +23,7 @@ function App() {
   // useEffect(() => {
   //   setInterval(() => {
   //     set({ "sonic-2": { inr: Math.random() * 9 } });
-  //   }, 1000);
+  //   }, 2000);
   // }, []);
 
   return <>{data && <Preview {...data} />}</>;
