@@ -2,7 +2,7 @@ import { Box, Button, Flex, Grid, HStack, Heading } from "@chakra-ui/react";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 const TOKENS_I_HAVE: TokenIhaveType = {
-  amount: 3520.506,
+  amount: 3270.502,
   symbol: "sonic-2",
 };
 
